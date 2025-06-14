@@ -1,10 +1,10 @@
-
 import React, { useState, useMemo } from 'react';
 import { Search, Calendar, Clock, Tag, ArrowRight, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { useQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -29,6 +29,7 @@ const Blog = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [sortBy, setSortBy] = useState('newest');
+  const navigate = useNavigate();
 
   // Fetch blog posts from Supabase
   const { data: blogPosts = [], isLoading, error } = useQuery({
@@ -99,6 +100,12 @@ const Blog = () => {
       month: 'long',
       day: 'numeric'
     });
+  };
+
+  const handleReadMore = (slug: string) => {
+    // For now, just navigate to the blog post URL
+    // Later you can create individual blog post pages
+    navigate(`/blog/${slug}`);
   };
 
   if (isLoading) {
@@ -214,7 +221,10 @@ const Blog = () => {
                             </span>
                           ))}
                         </div>
-                        <Button className="bg-purple-600 hover:bg-purple-700">
+                        <Button 
+                          className="bg-purple-600 hover:bg-purple-700"
+                          onClick={() => handleReadMore(featuredPost.slug)}
+                        >
                           Read Full Article
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
@@ -349,7 +359,11 @@ const Blog = () => {
                               </span>
                             ))}
                           </div>
-                          <Button variant="outline" className="w-full">
+                          <Button 
+                            variant="outline" 
+                            className="w-full"
+                            onClick={() => handleReadMore(post.slug)}
+                          >
                             Read More
                             <ArrowRight className="ml-2 h-4 w-4" />
                           </Button>
