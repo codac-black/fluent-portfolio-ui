@@ -1,13 +1,13 @@
-
 import React, { useState } from 'react';
 import { Plus, Edit, Trash2, Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import RichTextEditor from '@/components/blog/RichTextEditor';
+import ImageUpload from '@/components/blog/ImageUpload';
 
 interface BlogPost {
   id: string;
@@ -178,6 +178,14 @@ const BlogAdmin = () => {
     saveMutation.mutate(formData);
   };
 
+  const handleImageUploaded = (url: string) => {
+    setFormData({ ...formData, image_url: url });
+  };
+
+  const handleImageRemoved = () => {
+    setFormData({ ...formData, image_url: '' });
+  };
+
   if (isLoading) {
     return <div className="p-8">Loading...</div>;
   }
@@ -199,7 +207,7 @@ const BlogAdmin = () => {
             <CardTitle>{editingPost ? 'Edit Post' : 'Create New Post'}</CardTitle>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <Input
                   placeholder="Post Title"
@@ -213,20 +221,33 @@ const BlogAdmin = () => {
                   onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
                 />
               </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-2">Featured Image</label>
+                <ImageUpload
+                  onImageUploaded={handleImageUploaded}
+                  currentImage={formData.image_url}
+                  onImageRemoved={handleImageRemoved}
+                />
+              </div>
               
-              <Textarea
-                placeholder="Post Excerpt"
-                value={formData.excerpt}
-                onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
-                rows={3}
-              />
+              <div>
+                <label className="block text-sm font-medium mb-2">Post Excerpt</label>
+                <Input
+                  placeholder="Brief description of the post"
+                  value={formData.excerpt}
+                  onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
+                />
+              </div>
               
-              <Textarea
-                placeholder="Post Content"
-                value={formData.content}
-                onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                rows={10}
-              />
+              <div>
+                <label className="block text-sm font-medium mb-2">Post Content</label>
+                <RichTextEditor
+                  value={formData.content}
+                  onChange={(content) => setFormData({ ...formData, content })}
+                  placeholder="Write your blog post content here..."
+                />
+              </div>
               
               <div className="grid md:grid-cols-3 gap-4">
                 <Input
@@ -251,11 +272,6 @@ const BlogAdmin = () => {
                   placeholder="Author"
                   value={formData.author}
                   onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-                />
-                <Input
-                  placeholder="Image URL"
-                  value={formData.image_url}
-                  onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
                 />
               </div>
               

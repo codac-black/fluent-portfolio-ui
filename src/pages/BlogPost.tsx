@@ -152,9 +152,10 @@ const BlogPost = () => {
 
                 <div className="prose dark:prose-invert max-w-none mb-8">
                   {post.content ? (
-                    <div className="whitespace-pre-wrap text-gray-800 dark:text-gray-200 leading-relaxed">
-                      {post.content}
-                    </div>
+                    <div 
+                      className="rich-text-content text-gray-800 dark:text-gray-200 leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: post.content }}
+                    />
                   ) : (
                     <p className="text-gray-600 dark:text-gray-400 italic">
                       No content available for this post.
