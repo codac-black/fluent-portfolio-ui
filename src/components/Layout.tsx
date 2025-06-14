@@ -1,14 +1,16 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Sun, Moon, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X, Sun, Moon, Github, Linkedin, Mail, LogOut, LogIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { user, signOut } = useAuth();
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -37,6 +39,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
   };
 
   return (
@@ -72,9 +78,21 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   {item.name}
                 </Link>
               ))}
+              {user && (
+                <Link
+                  to="/blog/admin"
+                  className={`nav-link ${
+                    location.pathname === '/blog/admin' 
+                      ? 'text-purple-600 dark:text-purple-400' 
+                      : ''
+                  }`}
+                >
+                  Admin
+                </Link>
+              )}
             </div>
 
-            {/* Social Links & Theme Toggle */}
+            {/* Social Links, Auth & Theme Toggle */}
             <div className="hidden md:flex items-center space-x-4">
               <a
                 href="https://github.com"
@@ -106,6 +124,26 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               >
                 {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
               </Button>
+              {user ? (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleSignOut}
+                  className="p-2"
+                >
+                  <LogOut size={20} />
+                </Button>
+              ) : (
+                <Link to="/auth">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="p-2"
+                  >
+                    <LogIn size={20} />
+                  </Button>
+                </Link>
+              )}
             </div>
 
             {/* Mobile menu button */}
@@ -147,29 +185,64 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     {item.name}
                   </Link>
                 ))}
-                <div className="flex items-center space-x-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                  <a
-                    href="https://github.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                {user && (
+                  <Link
+                    to="/blog/admin"
+                    className={`nav-link ${
+                      location.pathname === '/blog/admin' 
+                        ? 'text-purple-600 dark:text-purple-400' 
+                        : ''
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
                   >
-                    <Github size={20} />
-                  </a>
-                  <a
-                    href="https://linkedin.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
-                  >
-                    <Linkedin size={20} />
-                  </a>
-                  <a
-                    href="mailto:alex@example.com"
-                    className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
-                  >
-                    <Mail size={20} />
-                  </a>
+                    Admin
+                  </Link>
+                )}
+                <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center space-x-4">
+                    <a
+                      href="https://github.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                    >
+                      <Github size={20} />
+                    </a>
+                    <a
+                      href="https://linkedin.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                    >
+                      <Linkedin size={20} />
+                    </a>
+                    <a
+                      href="mailto:alex@example.com"
+                      className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                    >
+                      <Mail size={20} />
+                    </a>
+                  </div>
+                  {user ? (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={handleSignOut}
+                      className="p-2"
+                    >
+                      <LogOut size={20} />
+                    </Button>
+                  ) : (
+                    <Link to="/auth">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="p-2"
+                      >
+                        <LogIn size={20} />
+                      </Button>
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
