@@ -1,11 +1,12 @@
+
 import React, { useState, useMemo } from 'react';
-import { Search, Calendar, Clock, Tag, ArrowRight, Plus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import Layout from '@/components/Layout';
+import FeaturedPost from '@/components/blog/FeaturedPost';
+import BlogFilters from '@/components/blog/BlogFilters';
+import BlogGrid from '@/components/blog/BlogGrid';
+import EmptyBlogState from '@/components/blog/EmptyBlogState';
 import { supabase } from '@/integrations/supabase/client';
 
 interface BlogPost {
@@ -94,17 +95,7 @@ const Blog = () => {
 
   const featuredPost = blogPosts.find(post => post.featured);
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
-
   const handleReadMore = (slug: string) => {
-    // For now, just navigate to the blog post URL
-    // Later you can create individual blog post pages
     navigate(`/blog/${slug}`);
   };
 
@@ -153,227 +144,32 @@ const Blog = () => {
 
         {/* Show empty state if no posts */}
         {blogPosts.length === 0 ? (
-          <section className="portfolio-section">
-            <div className="max-w-4xl mx-auto text-center">
-              <Card className="p-12">
-                <div className="mb-6">
-                  <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-purple-100 dark:bg-purple-900/20 flex items-center justify-center">
-                    <Plus className="w-12 h-12 text-purple-600 dark:text-purple-400" />
-                  </div>
-                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">No Blog Posts Yet</h2>
-                  <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-                    This blog is ready to go! Posts will appear here once they're published.
-                  </p>
-                  <div className="text-gray-500 dark:text-gray-400">
-                    <p>Stay tuned for upcoming articles about:</p>
-                    <div className="flex flex-wrap justify-center gap-2 mt-4">
-                      {['Web Development', 'React', 'TypeScript', 'Career Tips', 'Tech Tutorials'].map((topic) => (
-                        <span key={topic} className="px-3 py-1 bg-purple-100 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-full text-sm">
-                          {topic}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </div>
-          </section>
+          <EmptyBlogState />
         ) : (
           <>
             {/* Featured Post */}
             {featuredPost && (
-              <section className="portfolio-section">
-                <div className="max-w-6xl mx-auto">
-                  <h2 className="text-3xl font-bold text-center gradient-text mb-8">Featured Post</h2>
-                  <Card className="hover-lift overflow-hidden">
-                    <div className="md:flex">
-                      <div className="md:w-1/3">
-                        <img 
-                          src={featuredPost.image_url || "/placeholder.svg"} 
-                          alt={featuredPost.title}
-                          className="w-full h-64 md:h-full object-cover"
-                        />
-                      </div>
-                      <div className="md:w-2/3 p-8">
-                        <div className="flex items-center gap-4 mb-4">
-                          <span className="px-3 py-1 bg-purple-600 text-white rounded-full text-sm">
-                            {featuredPost.category}
-                          </span>
-                          <div className="flex items-center text-gray-600 dark:text-gray-300 text-sm">
-                            <Calendar className="h-4 w-4 mr-2" />
-                            {formatDate(featuredPost.created_at)}
-                          </div>
-                          <div className="flex items-center text-gray-600 dark:text-gray-300 text-sm">
-                            <Clock className="h-4 w-4 mr-2" />
-                            {featuredPost.read_time}
-                          </div>
-                        </div>
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                          {featuredPost.title}
-                        </h3>
-                        <p className="text-gray-700 dark:text-gray-300 mb-6">
-                          {featuredPost.excerpt}
-                        </p>
-                        <div className="flex flex-wrap gap-2 mb-6">
-                          {featuredPost.tags?.map((tag, index) => (
-                            <span key={index} className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-sm">
-                              #{tag}
-                            </span>
-                          ))}
-                        </div>
-                        <Button 
-                          className="bg-purple-600 hover:bg-purple-700"
-                          onClick={() => handleReadMore(featuredPost.slug)}
-                        >
-                          Read Full Article
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-                      </div>
-                    </div>
-                  </Card>
-                </div>
-              </section>
+              <FeaturedPost post={featuredPost} onReadMore={handleReadMore} />
             )}
 
             {/* Search and Filter */}
-            <section className="portfolio-section">
-              <div className="max-w-6xl mx-auto">
-                <Card className="p-6 mb-8">
-                  <div className="grid md:grid-cols-3 gap-6">
-                    {/* Search */}
-                    <div className="relative">
-                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                      <Input
-                        type="text"
-                        placeholder="Search articles..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="pl-10"
-                      />
-                    </div>
-
-                    {/* Category Filter */}
-                    <div>
-                      <select
-                        value={selectedCategory}
-                        onChange={(e) => setSelectedCategory(e.target.value)}
-                        className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-                      >
-                        {categories.map(category => (
-                          <option key={category} value={category}>{category}</option>
-                        ))}
-                      </select>
-                    </div>
-
-                    {/* Sort */}
-                    <div>
-                      <select
-                        value={sortBy}
-                        onChange={(e) => setSortBy(e.target.value)}
-                        className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-                      >
-                        <option value="newest">Newest First</option>
-                        <option value="oldest">Oldest First</option>
-                        <option value="alphabetical">Alphabetical</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* Tag Cloud */}
-                  {allTags.length > 0 && (
-                    <div className="mt-6">
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Popular Topics</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {allTags.map((tag, index) => (
-                          <button
-                            key={index}
-                            onClick={() => setSearchTerm(tag)}
-                            className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:bg-purple-100 dark:hover:bg-purple-900/30 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
-                          >
-                            #{tag}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </Card>
-              </div>
-            </section>
+            <BlogFilters
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+              sortBy={sortBy}
+              setSortBy={setSortBy}
+              categories={categories}
+              allTags={allTags}
+            />
 
             {/* Blog Posts Grid */}
-            <section className="portfolio-section">
-              <div className="max-w-6xl mx-auto">
-                <div className="flex justify-between items-center mb-8">
-                  <h2 className="text-3xl font-bold gradient-text">
-                    {selectedCategory === 'All' ? 'All Articles' : `${selectedCategory} Articles`}
-                  </h2>
-                  <span className="text-gray-600 dark:text-gray-300">
-                    {filteredAndSortedPosts.length} article{filteredAndSortedPosts.length !== 1 ? 's' : ''}
-                  </span>
-                </div>
-
-                {filteredAndSortedPosts.length === 0 ? (
-                  <Card className="p-12 text-center">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">No articles found</h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      Try adjusting your search terms or category filter
-                    </p>
-                  </Card>
-                ) : (
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredAndSortedPosts.map((post) => (
-                      <Card key={post.id} className="blog-card">
-                        <div className="relative">
-                          <img 
-                            src={post.image_url || "/placeholder.svg"} 
-                            alt={post.title}
-                            className="w-full h-48 object-cover"
-                          />
-                          <div className="absolute top-4 left-4">
-                            <span className="px-3 py-1 bg-purple-600 text-white rounded-full text-sm">
-                              {post.category}
-                            </span>
-                          </div>
-                        </div>
-                        <CardContent className="p-6">
-                          <div className="flex items-center gap-4 mb-3 text-sm text-gray-600 dark:text-gray-300">
-                            <div className="flex items-center">
-                              <Calendar className="h-4 w-4 mr-1" />
-                              {formatDate(post.created_at)}
-                            </div>
-                            <div className="flex items-center">
-                              <Clock className="h-4 w-4 mr-1" />
-                              {post.read_time}
-                            </div>
-                          </div>
-                          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2">
-                            {post.title}
-                          </h3>
-                          <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
-                            {post.excerpt}
-                          </p>
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            {post.tags?.slice(0, 3).map((tag, index) => (
-                              <span key={index} className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs">
-                                #{tag}
-                              </span>
-                            ))}
-                          </div>
-                          <Button 
-                            variant="outline" 
-                            className="w-full"
-                            onClick={() => handleReadMore(post.slug)}
-                          >
-                            Read More
-                            <ArrowRight className="ml-2 h-4 w-4" />
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </section>
+            <BlogGrid
+              posts={filteredAndSortedPosts}
+              selectedCategory={selectedCategory}
+              onReadMore={handleReadMore}
+            />
           </>
         )}
       </div>
