@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Sun, Moon, Github, Linkedin, Mail, LogOut, LogIn } from 'lucide-react';
@@ -267,8 +266,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <span className="text-xl font-bold gradient-text">Alex Chen</span>
               </div>
               <p className="text-gray-600 dark:text-gray-300 max-w-md">
-                Full-stack developer passionate about creating beautiful, functional web applications 
-                that solve real-world problems and deliver exceptional user experiences.
+                Data analytics professional dedicated to transforming raw information into actionable insights that drive business impact. I am passionate about leveraging statistical methods, machine learning, and clear visualizations to help organizations make informed, data-driven decisions.
               </p>
             </div>
             
