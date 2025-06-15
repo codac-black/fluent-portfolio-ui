@@ -130,7 +130,6 @@ const Index = () => {
               <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
                 Hi, I'm{' '}
                 <span className="gradient-text">Bruno Maisiba</span>
-                <span className="gradient-text">Bruno Maisiba</span>
               </h1>
               
               <div className="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mb-6 h-12">

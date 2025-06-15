@@ -38,8 +38,8 @@ const Resume = () => {
     {
       title: "Data Analyst",
       company: "British Airways",
-      location: "London, UK",
-      period: "January 2025 - Present",
+      location: "Remote",
+      period: "August 2024 - February 2025",
       achievements: [
         "Web scraped customer reviews and performed sentiment analysis using Python to analyze customer feedback",
         "Applied topic modeling to uncover common themes in customer feedback data",
@@ -61,7 +61,7 @@ const Resume = () => {
       title: "Aviation Data Analyst",
       company: "Aviation Safety Consultancy",
       location: "Kenya",
-      period: "July 2023 - March 2025",
+      period: "July 2023 - August 2023",
       achievements: [
         "Analyzed 5,000+ aviation crash reports to identify safety trends and patterns",
         "Created encrypted database system for secure storage of sensitive aviation data",
@@ -231,15 +231,15 @@ const Resume = () => {
                 <div className="mt-6 flex flex-wrap justify-center gap-4">
                   <div className="flex items-center text-gray-600 dark:text-gray-300">
                     <MapPin className="h-4 w-4 mr-2" />
-                    London, UK / Remote
+                    Nairobi, KE / Remote
                   </div>
                   <div className="flex items-center text-gray-600 dark:text-gray-300">
                     <Mail className="h-4 w-4 mr-2" />
-                    dataanalyst@example.com
+                    maisibabruno@gmail.com
                   </div>
                   <div className="flex items-center text-gray-600 dark:text-gray-300">
                     <Phone className="h-4 w-4 mr-2" />
-                    +44 (0) 20 1234 5678
+                    +254716981689
                   </div>
                 </div>
               </CardContent>
