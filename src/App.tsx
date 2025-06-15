@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,6 +14,7 @@ import BlogPost from "./pages/BlogPost";
 import BlogAdmin from "./pages/BlogAdmin";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
+import Contacts from "./pages/Contacts";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +38,7 @@ const App = () => (
                 <BlogAdmin />
               </ProtectedRoute>
             } />
+            <Route path="/contacts" element={<Contacts />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

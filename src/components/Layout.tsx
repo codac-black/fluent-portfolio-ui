@@ -17,6 +17,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     { name: 'Projects', href: '/projects' },
     { name: 'Resume', href: '/resume' },
     { name: 'Blog', href: '/blog' },
+    { name: 'Contacts', href: '/contacts' },
   ];
 
   useEffect(() => {
