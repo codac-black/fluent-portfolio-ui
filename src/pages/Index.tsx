@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Download, Code, Palette, Globe, Zap, Users, Award, Mail } from 'lucide-react';
@@ -128,6 +129,7 @@ const Index = () => {
               
               <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
                 Hi, I'm{' '}
+                <span className="gradient-text">Bruno Maisiba</span>
                 <span className="gradient-text">Bruno Maisiba</span>
               </h1>
               

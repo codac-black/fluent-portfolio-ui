@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Sun, Moon, Github, Linkedin, Mail, LogOut, LogIn } from 'lucide-react';
@@ -66,7 +67,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <Link to="/" className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-gradient-portfolio rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">B</span>
+                <span className="text-white font-bold text-xl">B</span>
               </div>
+              <span className="text-xl font-bold gradient-text">Bruno Maisiba</span>
               <span className="text-xl font-bold gradient-text">Bruno Maisiba</span>
             </Link>
 
@@ -270,7 +273,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               <div className="flex items-center space-x-2 mb-4">
                 <div className="w-8 h-8 bg-gradient-portfolio rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold">B</span>
+                  <span className="text-white font-bold">B</span>
                 </div>
+                <span className="text-xl font-bold gradient-text">Bruno Maisiba</span>
                 <span className="text-xl font-bold gradient-text">Bruno Maisiba</span>
               </div>
               <p className="text-gray-600 dark:text-gray-300 max-w-md">
