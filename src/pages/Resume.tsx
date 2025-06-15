@@ -37,36 +37,37 @@ const Resume = () => {
 
   const workExperience = [
     {
-      title: "Senior Frontend Developer",
-      company: "TechCorp Solutions",
-      location: "San Francisco, CA",
-      period: "2022 - Present",
+      title: "Data Analyst",
+      company: "British Airways",
+      location: "London, UK",
+      period: "January 2025 - Present",
       achievements: [
-        "Led a team of 5 developers in rebuilding the main product dashboard using React and TypeScript",
-        "Improved application performance by 40% through code optimization and lazy loading",
-        "Implemented comprehensive testing suite with 95% code coverage using Jest and React Testing Library"
+        "Web scraped customer reviews and performed sentiment analysis using Python to analyze customer feedback",
+        "Applied topic modeling to uncover common themes in customer feedback data",
+        "Developed comprehensive dashboard for senior management to inform service improvement strategies"
       ]
     },
     {
-      title: "Frontend Developer",
-      company: "StartupXYZ",
+      title: "Data Security Analyst",
+      company: "Daikibo Industrial",
       location: "Remote",
-      period: "2020 - 2022",
+      period: "March 2025",
       achievements: [
-        "Developed responsive web applications using React, Redux, and Tailwind CSS",
-        "Collaborated with UX/UI designers to implement pixel-perfect designs",
-        "Built and maintained component library used across 3 different products"
+        "Analyzed web logs and user patterns to detect unauthorized access and security breaches",
+        "Reported critical breach findings that led to timely remediation and improved security posture",
+        "Implemented automated monitoring systems for real-time threat detection"
       ]
     },
     {
-      title: "Junior Web Developer",
-      company: "Digital Agency Pro",
-      location: "New York, NY",
-      period: "2019 - 2020",
+      title: "Aviation Data Analyst",
+      company: "Aviation Safety Consultancy",
+      location: "Kenya",
+      period: "July 2023 - March 2025",
       achievements: [
-        "Created custom WordPress themes and plugins for client websites",
-        "Optimized website loading speeds resulting in 30% improvement in Core Web Vitals",
-        "Mentored 2 junior developers in modern JavaScript development practices"
+        "Analyzed 5,000+ aviation crash reports to identify safety trends and patterns",
+        "Created encrypted database system for secure storage of sensitive aviation data",
+        "Developed automated threat detection system ensuring compliance with data privacy standards",
+        "Performed comprehensive analysis of Kenya Airways customer reviews to track satisfaction trends"
       ]
     }
   ];
@@ -75,52 +76,111 @@ const Resume = () => {
     {
       degree: "Bachelor of Science in Computer Science",
       school: "University of Technology",
-      location: "California, USA",
-      period: "2015 - 2019",
-      details: "Graduated Magna Cum Laude, GPA: 3.8/4.0"
+      location: "Kenya",
+      period: "2019 - 2023",
+      details: "Specialized in Data Science and Analytics"
     }
   ];
 
   const certifications = [
     {
-      name: "AWS Certified Developer Associate",
-      issuer: "Amazon Web Services",
+      name: "British Data Science Certification",
+      issuer: "British Data Science Institute",
+      year: "2025"
+    },
+    {
+      name: "Deloitte Data Analytics & Forensic Technology",
+      issuer: "Deloitte",
+      year: "2025"
+    },
+    {
+      name: "DBT (Data Build Tool) Certification",
+      issuer: "dbt Labs",
+      year: "2025"
+    },
+    {
+      name: "Cybersecurity & Incident Response",
+      issuer: "Cisco & LinkedIn Learning",
+      year: "2025"
+    },
+    {
+      name: "Ethical Hacking Certification",
+      issuer: "Cisco",
+      year: "2024"
+    },
+    {
+      name: "Python Programming Certification",
+      issuer: "Python Institute",
+      year: "2024"
+    },
+    {
+      name: "CCNA Networking & System Security",
+      issuer: "Cisco",
       year: "2023"
-    },
-    {
-      name: "React Developer Certification",
-      issuer: "Meta",
-      year: "2022"
-    },
-    {
-      name: "JavaScript Algorithms and Data Structures",
-      issuer: "freeCodeCamp",
-      year: "2021"
     }
   ];
 
   const skills = [
-    { category: "Frontend", items: ["React", "TypeScript", "Next.js", "Vue.js", "Tailwind CSS"], level: 90 },
-    { category: "Backend", items: ["Node.js", "Python", "Express", "PostgreSQL", "MongoDB"], level: 75 },
-    { category: "Tools", items: ["Git", "Docker", "AWS", "Jest", "Webpack"], level: 85 },
-    { category: "Design", items: ["Figma", "Adobe XD", "Responsive Design", "UI/UX"], level: 70 }
+    { 
+      category: "Programming & Analysis", 
+      items: ["Python", "SQL", "R", "Excel", "Data Processing", "Automation"], 
+      level: 95 
+    },
+    { 
+      category: "Visualization & BI", 
+      items: ["Tableau", "Power BI", "Dashboard Development", "Data Storytelling"], 
+      level: 90 
+    },
+    { 
+      category: "Data Engineering", 
+      items: ["DBT", "Airflow", "Snowflake", "DuckDB", "ETL/ELT Pipelines"], 
+      level: 85 
+    },
+    { 
+      category: "Analytics & ML", 
+      items: ["Predictive Modeling", "Trend Analysis", "Forecasting", "Feature Engineering", "EDA"], 
+      level: 88 
+    },
+    { 
+      category: "Tools & Infrastructure", 
+      items: ["Git", "Linux", "Docker", "Web Scraping", "API Integration"], 
+      level: 80 
+    }
   ];
 
   const achievements = [
     {
-      title: "Employee of the Year 2023",
-      organization: "TechCorp Solutions",
-      description: "Recognized for outstanding performance and leadership in frontend development"
+      title: "Data-Driven Security Improvement",
+      organization: "Daikibo Industrial",
+      description: "Identified critical security vulnerabilities through log analysis, leading to 40% reduction in false-positive alerts"
     },
     {
-      title: "Open Source Contributor",
-      organization: "GitHub",
-      description: "Active contributor to popular React libraries with 500+ stars on personal projects"
+      title: "IoT Water System Optimization",
+      organization: "Smart Water Initiative",
+      description: "Designed secure IoT monitoring system that reduced water wastage by 30% through predictive analytics"
     },
     {
-      title: "Tech Conference Speaker",
-      organization: "ReactConf 2023",
-      description: "Presented 'Modern State Management in React' to 1000+ developers"
+      title: "Aviation Safety Enhancement",
+      organization: "Aviation Safety Consultancy",
+      description: "Analyzed 5,000+ incident reports to improve safety protocols and compliance standards"
+    }
+  ];
+
+  const projects = [
+    {
+      title: "Procurement KPI Analysis",
+      period: "June 2025",
+      description: "Analyzed supply chain bottlenecks, engineered procurement KPIs, predicted savings using ML models, and ranked suppliers by reliability to uncover cost optimization opportunities"
+    },
+    {
+      title: "Security Log Monitoring Platform",
+      period: "December 2024",
+      description: "Built automated log analysis system for real-time monitoring, designed visualization dashboards for alerts and system events, reducing false-positive alerts by 40% and improving response time by 60%"
+    },
+    {
+      title: "IoT Smart Water System Security & Monitoring",
+      period: "January 2024 - April 2024",
+      description: "Designed secure IoT system reducing water wastage by 30%, installed and maintained sensor networks, conducted system diagnostics and penetration testing for reliability and security"
     }
   ];
 
@@ -132,7 +192,7 @@ const Resume = () => {
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl font-bold gradient-text mb-6">Resume</h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-              Download my full resume or explore my professional journey below
+              Download my full resume or explore my data analytics journey below
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
@@ -156,22 +216,24 @@ const Resume = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed text-center">
-                  Passionate Frontend Developer with 5+ years of experience creating beautiful, responsive web applications. 
-                  Specialized in React ecosystem with a strong foundation in TypeScript, modern CSS, and performance optimization. 
-                  Proven track record of leading development teams and delivering high-quality solutions that drive business growth.
+                  Detail-oriented and results-driven Data Analyst with a BSc in Computer Science and proven 
+                  experience in extracting insights from data, developing predictive models, and building intuitive 
+                  dashboards. Skilled in Python, SQL, Power BI, and Tableau. Adept at applying data science 
+                  techniques to solve real-world business problems across sectors including solar energy, aviation, 
+                  and cybersecurity. Passionate about driving decisions through data.
                 </p>
                 <div className="mt-6 flex flex-wrap justify-center gap-4">
                   <div className="flex items-center text-gray-600 dark:text-gray-300">
                     <MapPin className="h-4 w-4 mr-2" />
-                    San Francisco, CA
+                    London, UK / Remote
                   </div>
                   <div className="flex items-center text-gray-600 dark:text-gray-300">
                     <Mail className="h-4 w-4 mr-2" />
-                    alex@example.com
+                    dataanalyst@example.com
                   </div>
                   <div className="flex items-center text-gray-600 dark:text-gray-300">
                     <Phone className="h-4 w-4 mr-2" />
-                    (555) 123-4567
+                    +44 (0) 20 1234 5678
                   </div>
                 </div>
               </CardContent>
@@ -214,6 +276,27 @@ const Resume = () => {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+
+            {/* Key Projects Section */}
+            <div className="mt-12">
+              <h3 className="text-2xl font-bold text-center gradient-text mb-8">Key Projects</h3>
+              <div className="space-y-6">
+                {projects.map((project, index) => (
+                  <Card key={index} className="hover-lift">
+                    <CardContent className="p-6">
+                      <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+                        <h4 className="text-lg font-bold text-gray-900 dark:text-white">{project.title}</h4>
+                        <div className="flex items-center text-gray-600 dark:text-gray-300 text-sm mt-1 md:mt-0">
+                          <Calendar className="h-4 w-4 mr-2" />
+                          {project.period}
+                        </div>
+                      </div>
+                      <p className="text-gray-700 dark:text-gray-300">{project.description}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -276,7 +359,7 @@ const Resume = () => {
         <section id="skills" className={`portfolio-section transition-all duration-1000 delay-600 ${visibleSections.includes('skills') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center gradient-text mb-12">Technical Skills</h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-6">
               {skills.map((skillCategory, index) => (
                 <Card key={index} className="hover-lift">
                   <CardHeader>
@@ -314,7 +397,7 @@ const Resume = () => {
         {/* Achievements */}
         <section id="achievements" className={`portfolio-section transition-all duration-1000 delay-800 ${visibleSections.includes('achievements') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center gradient-text mb-12">Achievements & Awards</h2>
+            <h2 className="text-3xl font-bold text-center gradient-text mb-12">Key Achievements</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {achievements.map((achievement, index) => (
                 <Card key={index} className="hover-lift text-center">
