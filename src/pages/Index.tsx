@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Download, Code, Palette, Globe, Zap, Users, Award, Mail } from 'lucide-react';
@@ -11,20 +10,20 @@ const Index = () => {
   const [statsVisible, setStatsVisible] = useState(false);
 
   const skills = [
-    'Frontend Developer',
-    'React Specialist',
-    'UI/UX Enthusiast',
-    'Full-Stack Engineer',
-    'JavaScript Expert'
+    'Data Analyst',
+    'Python Developer',
+    'SQL Expert',
+    'Dashboard Designer',
+    'Business Intelligence'
   ];
 
   const techSkills = [
-    { name: 'React', level: 95, icon: '⚛️' },
-    { name: 'TypeScript', level: 90, icon: '📘' },
-    { name: 'Node.js', level: 85, icon: '🟢' },
-    { name: 'Next.js', level: 88, icon: '▲' },
-    { name: 'Tailwind CSS', level: 92, icon: '🎨' },
-    { name: 'GraphQL', level: 80, icon: '📊' }
+    { name: 'Python', level: 95, icon: '🐍' },
+    { name: 'SQL', level: 92, icon: '🗄️' },
+    { name: 'Tableau', level: 88, icon: '📊' },
+    { name: 'Power BI', level: 85, icon: '📈' },
+    { name: 'Excel', level: 90, icon: '📋' },
+    { name: 'DBT', level: 80, icon: '🔧' }
   ];
 
   const stats = [
@@ -139,8 +138,7 @@ const Index = () => {
               </div>
               
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-lg leading-relaxed">
-                I craft exceptional digital experiences through innovative web development, 
-                combining cutting-edge technology with beautiful design to bring ideas to life.
+                I transform raw data into actionable insights through advanced analytics, machine learning, and interactive dashboards. Combining statistical expertise with business acumen to drive data-driven decisions.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
@@ -168,7 +166,7 @@ const Index = () => {
                 <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl animate-float">
                   <img
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&crop=face"
-                    alt="Alex Chen - Web Developer"
+                    alt="Alex Chen - Data Analyst"
                     className="w-full h-auto object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-purple-600/20 to-transparent"></div>
@@ -191,9 +189,9 @@ const Index = () => {
       <section className="portfolio-section bg-white dark:bg-gray-800">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl font-bold mb-4 gradient-text">Skills & Technologies</h2>
+            <h2 className="text-4xl font-bold mb-4 gradient-text">Data Analytics Skills</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Proficient in modern web technologies and frameworks, constantly learning and adapting to new tools.
+              Proficient in modern data tools and technologies, constantly learning and adapting to new analytical frameworks.
             </p>
           </div>
 
