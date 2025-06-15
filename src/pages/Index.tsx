@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Download, Code, Palette, Globe, Zap, Users, Award, Mail } from 'lucide-react';
@@ -128,7 +129,7 @@ const Index = () => {
               
               <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
                 Hi, I'm{' '}
-                <span className="gradient-text">Alex Chen</span>
+                <span className="gradient-text">Bruno Maisiba</span>
               </h1>
               
               <div className="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mb-6 h-12">
@@ -166,7 +167,7 @@ const Index = () => {
                 <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl animate-float">
                   <img
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&crop=face"
-                    alt="Alex Chen - Data Analyst"
+                    alt="Bruno Maisiba - Data Analyst"
                     className="w-full h-auto object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-purple-600/20 to-transparent"></div>

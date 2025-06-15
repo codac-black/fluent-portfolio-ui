@@ -35,7 +35,7 @@ const HeroSection = () => {
             <div className="grid grid-cols-2 gap-4">
               <img
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face"
-                alt="Alex working on data analysis"
+                alt="Bruno working on data analysis"
                 className="rounded-2xl shadow-lg hover-lift"
               />
               <div className="space-y-4">

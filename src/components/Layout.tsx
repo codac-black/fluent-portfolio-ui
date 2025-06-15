@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Sun, Moon, Github, Linkedin, Mail, LogOut, LogIn } from 'lucide-react';
@@ -58,9 +59,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-gradient-portfolio rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">A</span>
+                <span className="text-white font-bold text-xl">B</span>
               </div>
-              <span className="text-xl font-bold gradient-text">Alex Chen</span>
+              <span className="text-xl font-bold gradient-text">Bruno Maisiba</span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -111,7 +112,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <Linkedin size={20} />
               </a>
               <a
-                href="mailto:alex@example.com"
+                href="mailto:bruno@example.com"
                 className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
               >
                 <Mail size={20} />
@@ -217,7 +218,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                       <Linkedin size={20} />
                     </a>
                     <a
-                      href="mailto:alex@example.com"
+                      href="mailto:bruno@example.com"
                       className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
                     >
                       <Mail size={20} />
@@ -262,9 +263,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <div className="md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
                 <div className="w-8 h-8 bg-gradient-portfolio rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold">A</span>
+                  <span className="text-white font-bold">B</span>
                 </div>
-                <span className="text-xl font-bold gradient-text">Alex Chen</span>
+                <span className="text-xl font-bold gradient-text">Bruno Maisiba</span>
               </div>
               <p className="text-gray-600 dark:text-gray-300 max-w-md">
                 Data analytics professional dedicated to transforming raw information into actionable insights that drive business impact. I am passionate about leveraging statistical methods, machine learning, and clear visualizations to help organizations make informed, data-driven decisions.
@@ -306,7 +307,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   <Linkedin size={24} />
                 </a>
                 <a
-                  href="mailto:alex@example.com"
+                  href="mailto:bruno@example.com"
                   className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
                 >
                   <Mail size={24} />
@@ -317,7 +318,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           
           <div className="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8 text-center">
             <p className="text-gray-600 dark:text-gray-300">
-              © 2024 Alex Chen. All rights reserved. Built with React, TypeScript, and Tailwind CSS.
+              © 2024 Bruno Maisiba. All rights reserved. Built with React, TypeScript, and Tailwind CSS.
             </p>
           </div>
         </div>
