@@ -7,53 +7,57 @@ import Layout from '@/components/Layout';
 
 const About = () => {
   const skills = {
-    frontend: [
-      'React', 'Next.js', 'TypeScript', 'JavaScript', 'Vue.js', 'Angular',
-      'HTML5', 'CSS3', 'Sass', 'Tailwind CSS', 'Material-UI', 'Chakra UI'
+    analytics: [
+      'Python', 'SQL', 'R', 'Excel', 'Predictive Modeling', 'Trend Analysis',
+      'Forecasting', 'Data Cleaning', 'EDA', 'Feature Engineering', 'Statistical Analysis', 'Machine Learning'
     ],
-    backend: [
-      'Node.js', 'Express.js', 'Python', 'Django', 'FastAPI', 'PostgreSQL',
-      'MongoDB', 'Redis', 'GraphQL', 'REST APIs', 'Socket.io', 'JWT'
+    visualization: [
+      'Tableau', 'Power BI', 'Dashboard Development', 'Data Storytelling', 'KPI Design',
+      'Interactive Visualizations', 'Report Automation', 'Business Intelligence', 'Executive Reporting', 'Data Presentation'
     ],
     tools: [
-      'Git', 'Docker', 'AWS', 'Vercel', 'Netlify', 'Figma', 'Adobe XD',
-      'Webpack', 'Vite', 'Jest', 'Cypress', 'Storybook', 'Linux'
+      'DBT', 'Airflow', 'Snowflake', 'DuckDB', 'Git', 'Linux', 'Docker',
+      'Web Scraping', 'API Integration', 'Jupyter', 'VS Code', 'AWS'
     ],
-    design: [
-      'UI/UX Design', 'Responsive Design', 'Accessibility', 'Wireframing',
-      'Prototyping', 'Design Systems', 'Color Theory', 'Typography'
+    domain: [
+      'Solar Energy Analytics', 'Aviation Safety', 'Cybersecurity', 'Supply Chain',
+      'Customer Sentiment Analysis', 'IoT Systems', 'Procurement Analytics', 'Risk Assessment'
     ]
   };
 
   const education = [
     {
       degree: 'Bachelor of Science in Computer Science',
-      school: 'Stanford University',
-      year: '2018-2022',
-      description: 'Graduated Magna Cum Laude with a focus on Web Technologies and Human-Computer Interaction.',
-      achievements: ['Dean\'s List (4 semesters)', 'CS Department Honors', 'Phi Beta Kappa']
+      school: 'University College',
+      year: '2019-2023',
+      description: 'Specialized in data structures, algorithms, and statistical computing with focus on data analytics applications.',
+      achievements: ['Data Analytics Capstone Project', 'Statistical Computing Excellence', 'Computer Science Honor Society']
     },
     {
-      degree: 'Full Stack Web Development Bootcamp',
-      school: 'General Assembly',
-      year: '2017',
-      description: 'Intensive 12-week program covering modern web development technologies and best practices.',
-      achievements: ['Top 5% of class', 'Best Final Project Award', 'Teaching Assistant role']
+      degree: 'British Data Science Certification',
+      school: 'British Data Science Institute',
+      year: '2025',
+      description: 'Advanced certification covering machine learning, statistical analysis, and data visualization techniques.',
+      achievements: ['Top 10% Performance', 'Advanced Analytics Project', 'Industry Case Study Excellence']
     }
   ];
 
   const certifications = [
-    { name: 'AWS Certified Developer', issuer: 'Amazon Web Services', year: '2023' },
-    { name: 'React Developer Certification', issuer: 'Meta', year: '2023' },
-    { name: 'Google UX Design Certificate', issuer: 'Google', year: '2022' },
-    { name: 'MongoDB Certified Developer', issuer: 'MongoDB', year: '2022' }
+    { name: 'British Data Science', issuer: 'British Data Science Institute', year: '2025' },
+    { name: 'Deloitte Data Analytics & Forensic Technology', issuer: 'Deloitte', year: '2025' },
+    { name: 'DBT Analytics Engineering', issuer: 'DBT Labs', year: '2025' },
+    { name: 'Excel Advanced Analytics', issuer: 'Microsoft', year: '2025' },
+    { name: 'Cybersecurity & Incident Response', issuer: 'Cisco & LinkedIn Learning', year: '2025' },
+    { name: 'Ethical Hacking', issuer: 'Cisco', year: '2024' },
+    { name: 'Python Data Analytics', issuer: 'Python Institute', year: '2024' },
+    { name: 'CCNA Networking & System Security', issuer: 'Cisco', year: '2023' }
   ];
 
   const interests = [
-    { icon: Coffee, title: 'Coffee Brewing', description: 'Exploring different brewing methods and coffee origins' },
-    { icon: Camera, title: 'Photography', description: 'Capturing moments and beautiful landscapes during travels' },
-    { icon: Music, title: 'Music Production', description: 'Creating electronic music and learning new instruments' },
-    { icon: Plane, title: 'Travel', description: 'Exploring new cultures and gaining fresh perspectives' }
+    { icon: Coffee, title: 'Data Visualization', description: 'Creating compelling stories through interactive dashboards' },
+    { icon: Camera, title: 'Machine Learning', description: 'Exploring predictive models and AI applications' },
+    { icon: Music, title: 'Open Source', description: 'Contributing to data science and analytics communities' },
+    { icon: Plane, title: 'Industry Research', description: 'Staying current with analytics trends across sectors' }
   ];
 
   return (
@@ -65,14 +69,15 @@ const About = () => {
             <div className="animate-fade-in-up">
               <h1 className="text-5xl font-bold mb-6 gradient-text">About Me</h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                I'm a passionate full-stack developer with over 5 years of experience creating 
-                digital solutions that make a difference. Based in San Francisco, I specialize 
-                in building scalable web applications using modern technologies.
+                Detail-oriented and results-driven Data Analyst with a BSc in Computer Science and proven
+                experience in extracting insights from data, developing predictive models, and building intuitive
+                dashboards. Skilled in Python, SQL, Power BI, and Tableau. Adept at applying data science
+                techniques to solve real-world business problems across sectors including solar energy, aviation, and cybersecurity.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                  <span className="text-gray-600 dark:text-gray-300">San Francisco, CA</span>
+                  <span className="text-gray-600 dark:text-gray-300">Global Remote</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Calendar className="w-5 h-5 text-purple-600 dark:text-purple-400" />
@@ -80,7 +85,7 @@ const About = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Award className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                  <span className="text-gray-600 dark:text-gray-300">AWS Certified Developer</span>
+                  <span className="text-gray-600 dark:text-gray-300">8+ Professional Certifications</span>
                 </div>
               </div>
             </div>
@@ -89,18 +94,18 @@ const About = () => {
               <div className="grid grid-cols-2 gap-4">
                 <img
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face"
-                  alt="Alex working"
+                  alt="Alex working on data analysis"
                   className="rounded-2xl shadow-lg hover-lift"
                 />
                 <div className="space-y-4">
                   <img
-                    src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=400&h=240&fit=crop"
-                    alt="Workspace"
+                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=240&fit=crop"
+                    alt="Data analytics dashboard"
                     className="rounded-2xl shadow-lg hover-lift"
                   />
                   <img
-                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=240&fit=crop"
-                    alt="Team collaboration"
+                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=240&fit=crop"
+                    alt="Data visualization charts"
                     className="rounded-2xl shadow-lg hover-lift"
                   />
                 </div>
@@ -117,10 +122,10 @@ const About = () => {
             <Heart className="w-16 h-16 text-purple-600 dark:text-purple-400 mx-auto mb-6" />
             <h2 className="text-3xl font-bold mb-6 gradient-text">My Mission</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              I believe technology should enhance human experiences, not complicate them. 
-              My mission is to create intuitive, accessible, and beautiful digital solutions 
-              that solve real problems and bring joy to users. Every line of code I write 
-              is driven by empathy, curiosity, and a commitment to excellence.
+              I believe data should drive decisions, not assumptions. My mission is to transform raw data 
+              into actionable insights that solve real business problems and create meaningful impact. 
+              Every analysis I conduct is driven by curiosity, precision, and a commitment to uncovering 
+              the stories hidden within the numbers.
             </p>
           </div>
         </div>
@@ -132,7 +137,7 @@ const About = () => {
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold mb-4 gradient-text">Skills & Technologies</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              A comprehensive toolkit built through years of hands-on experience and continuous learning.
+              A comprehensive data analytics toolkit built through years of hands-on experience across multiple industries.
             </p>
           </div>
 
@@ -141,9 +146,9 @@ const About = () => {
               <Card key={category} className="hover-lift animate-scale-in" style={{ animationDelay: `${index * 150}ms` }}>
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold mb-4 capitalize gradient-text">
-                    {category === 'frontend' ? 'Frontend' : 
-                     category === 'backend' ? 'Backend' : 
-                     category === 'tools' ? 'Tools & DevOps' : 'Design'}
+                    {category === 'analytics' ? 'Analytics & Programming' : 
+                     category === 'visualization' ? 'Visualization & BI' : 
+                     category === 'tools' ? 'Tools & Platforms' : 'Domain Expertise'}
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {skillList.map((skill) => (
@@ -169,7 +174,7 @@ const About = () => {
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold mb-4 gradient-text">Education & Certifications</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Continuous learning through formal education and professional development.
+              Continuous learning through formal education and professional development in data analytics.
             </p>
           </div>
 
@@ -201,7 +206,7 @@ const About = () => {
 
           {/* Certifications Grid */}
           <div>
-            <h3 className="text-2xl font-bold mb-8 text-center">Certifications</h3>
+            <h3 className="text-2xl font-bold mb-8 text-center">Professional Certifications</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {certifications.map((cert, index) => (
                 <Card key={cert.name} className="hover-lift animate-scale-in" style={{ animationDelay: `${index * 100}ms` }}>
@@ -225,9 +230,9 @@ const About = () => {
       <section className="portfolio-section bg-gradient-portfolio text-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Beyond Coding</h2>
+            <h2 className="text-4xl font-bold mb-4">Beyond Data</h2>
             <p className="text-lg opacity-90 max-w-2xl mx-auto">
-              When I'm not crafting code, you'll find me exploring these passions that fuel my creativity.
+              When I'm not analyzing data, you'll find me exploring these passions that fuel my analytical mindset.
             </p>
           </div>
 
