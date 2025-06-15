@@ -45,7 +45,7 @@ const Contacts = () => {
             <Mail />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/brunomaisiba"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-full bg-accent hover:bg-purple-100 dark:hover:bg-purple-900 transition-colors"
@@ -54,7 +54,7 @@ const Contacts = () => {
             <Linkedin />
           </a>
           <a
-            href="https://github.com"
+            href="https://github.com/codac-black"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-full bg-accent hover:bg-purple-100 dark:hover:bg-purple-900 transition-colors"

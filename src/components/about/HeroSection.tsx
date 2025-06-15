@@ -1,5 +1,5 @@
-
 import React from 'react';
+import type { ReactElement } from 'react';
 import { MapPin, Calendar, Award } from 'lucide-react';
 
 const HeroSection = () => {
@@ -22,11 +22,11 @@ const HeroSection = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Calendar className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                <span className="text-gray-600 dark:text-gray-300">5+ Years Experience</span>
+                <span className="text-gray-600 dark:text-gray-300">2+ Years Experience</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Award className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                <span className="text-gray-600 dark:text-gray-300">8+ Professional Certifications</span>
+                <span className="text-gray-600 dark:text-gray-300">5+ Professional Certifications</span>
               </div>
             </div>
           </div>
@@ -34,8 +34,8 @@ const HeroSection = () => {
           <div className="relative animate-slide-in-right">
             <div className="grid grid-cols-2 gap-4">
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face"
-                alt="Alex working on data analysis"
+                src="/public/images/image.jpeg"
+                alt="Bruno working on data analysis"
                 className="rounded-2xl shadow-lg hover-lift"
               />
               <div className="space-y-4">

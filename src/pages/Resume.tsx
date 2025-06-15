@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Download, MapPin, Calendar, Award, ExternalLink, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -195,10 +194,17 @@ const Resume = () => {
               Download my full resume or explore my data analytics journey below
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
-                <Download className="mr-2 h-5 w-5" />
-                Download PDF Resume
-              </Button>
+              <a
+                href="/assets/Bruno_Maisiba_Bosire_Resume.pdf"
+                download
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
+                  <Download className="mr-2 h-5 w-5" />
+                  Download PDF Resume
+                </Button>
+              </a>
               <Button variant="outline" size="lg">
                 <Mail className="mr-2 h-5 w-5" />
                 Contact Me

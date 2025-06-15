@@ -27,10 +27,10 @@ const Index = () => {
   ];
 
   const stats = [
-    { label: 'Years Experience', value: 5, suffix: '+' },
-    { label: 'Projects Completed', value: 50, suffix: '+' },
-    { label: 'Happy Clients', value: 30, suffix: '+' },
-    { label: 'GitHub Stars', value: 1200, suffix: '+' }
+    { label: 'Years Experience', value: 2, suffix: '+' },
+    { label: 'Projects Completed', value: 10, suffix: '+' },
+    { label: 'Happy Clients', value: 5, suffix: '+' },
+    { label: 'GitHub Stars', value: 1, suffix: '+' }
   ];
 
   const features = [
@@ -128,7 +128,7 @@ const Index = () => {
               
               <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
                 Hi, I'm{' '}
-                <span className="gradient-text">Alex Chen</span>
+                <span className="gradient-text">Bruno Maisiba</span>
               </h1>
               
               <div className="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mb-6 h-12">
@@ -148,6 +148,12 @@ const Index = () => {
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
+                <a
+                href="/assets/Bruno_Maisiba_Bosire_Resume.pdf"
+                download
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button 
                   size="lg" 
                   variant="outline"
@@ -156,6 +162,7 @@ const Index = () => {
                   <Download className="mr-2 h-4 w-4" />
                   Download Resume
                 </Button>
+                </a>
               </div>
             </div>
 
@@ -165,8 +172,8 @@ const Index = () => {
                 {/* Main Image Container */}
                 <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl animate-float">
                   <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&crop=face"
-                    alt="Alex Chen - Data Analyst"
+                    src="./images/image.jpeg"
+                    alt="Bruno Maisiba - Data Analyst"
                     className="w-full h-auto object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-purple-600/20 to-transparent"></div>

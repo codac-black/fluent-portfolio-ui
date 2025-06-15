@@ -7,14 +7,14 @@ const EducationSection = () => {
   const education = [
     {
       degree: 'Bachelor of Science in Computer Science',
-      school: 'University College',
-      year: '2019-2023',
+      school: 'Kabarak University',
+      year: '2020-2024',
       description: 'Specialized in data structures, algorithms, and statistical computing with focus on data analytics applications.',
       achievements: ['Data Analytics Capstone Project', 'Statistical Computing Excellence', 'Computer Science Honor Society']
     },
     {
       degree: 'British Data Science Certification',
-      school: 'British Data Science Institute',
+      school: 'Forage',
       year: '2025',
       description: 'Advanced certification covering machine learning, statistical analysis, and data visualization techniques.',
       achievements: ['Top 10% Performance', 'Advanced Analytics Project', 'Industry Case Study Excellence']
@@ -22,11 +22,11 @@ const EducationSection = () => {
   ];
 
   const certifications = [
-    { name: 'British Data Science', issuer: 'British Data Science Institute', year: '2025' },
+    { name: 'British Data Science', issuer: 'Forage', year: '2025' },
     { name: 'Deloitte Data Analytics & Forensic Technology', issuer: 'Deloitte', year: '2025' },
-    { name: 'DBT Analytics Engineering', issuer: 'DBT Labs', year: '2025' },
-    { name: 'Excel Advanced Analytics', issuer: 'Microsoft', year: '2025' },
-    { name: 'Cybersecurity & Incident Response', issuer: 'Cisco & LinkedIn Learning', year: '2025' },
+    { name: 'DBT Analytics Engineering', issuer: 'Data Talk', year: '2025' },
+    { name: 'Excel Advanced Analytics', issuer: 'Datacamp', year: '2025' },
+    { name: 'Cybersecurity & Incident Response', issuer: 'LinkedIn Learning', year: '2025' },
     { name: 'Ethical Hacking', issuer: 'Cisco', year: '2024' },
     { name: 'Python Data Analytics', issuer: 'Python Institute', year: '2024' },
     { name: 'CCNA Networking & System Security', issuer: 'Cisco', year: '2023' }

@@ -6,7 +6,10 @@ import { useAuth } from '@/contexts/AuthContext';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const stored = localStorage.getItem('darkMode');
+    return stored ? JSON.parse(stored) : false;
+  });
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { user, signOut } = useAuth();
@@ -35,10 +38,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     } else {
       document.documentElement.classList.remove('dark');
     }
+    localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
   }, [isDarkMode]);
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+    setIsDarkMode((prev) => {
+      localStorage.setItem('darkMode', JSON.stringify(!prev));
+      return !prev;
+    });
   };
 
   const handleSignOut = async () => {
@@ -58,9 +65,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-gradient-portfolio rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">A</span>
+                <span className="text-white font-bold text-xl">B</span>
               </div>
-              <span className="text-xl font-bold gradient-text">Alex Chen</span>
+              <span className="text-xl font-bold gradient-text">Bruno Maisiba</span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -95,7 +102,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             {/* Social Links, Auth & Theme Toggle */}
             <div className="hidden md:flex items-center space-x-4">
               <a
-                href="https://github.com"
+                href="https://github.com/codac-black"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
@@ -103,7 +110,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <Github size={20} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/brunomaisiba"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
@@ -111,7 +118,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <Linkedin size={20} />
               </a>
               <a
-                href="mailto:alex@example.com"
+                href="mailto:maisibabruno@gmail.com"
                 className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
               >
                 <Mail size={20} />
@@ -201,7 +208,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
                   <div className="flex items-center space-x-4">
                     <a
-                      href="https://github.com"
+                      href="https://github.com/codac-black"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
@@ -209,7 +216,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                       <Github size={20} />
                     </a>
                     <a
-                      href="https://linkedin.com"
+                      href="https://www.linkedin.com/in/brunomaisiba"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
@@ -217,7 +224,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                       <Linkedin size={20} />
                     </a>
                     <a
-                      href="mailto:alex@example.com"
+                      href="mailto:maisibabruno@gmail.com"
                       className="p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
                     >
                       <Mail size={20} />
@@ -262,13 +269,20 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <div className="md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
                 <div className="w-8 h-8 bg-gradient-portfolio rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold">A</span>
+                  <span className="text-white font-bold">B</span>
                 </div>
-                <span className="text-xl font-bold gradient-text">Alex Chen</span>
+                <span className="text-xl font-bold gradient-text">Bruno Maisiba</span>
               </div>
               <p className="text-gray-600 dark:text-gray-300 max-w-md">
                 Data analytics professional dedicated to transforming raw information into actionable insights that drive business impact. I am passionate about leveraging statistical methods, machine learning, and clear visualizations to help organizations make informed, data-driven decisions.
               </p>
+              <a
+                href="/assets/Bruno_Maisiba_Bosire_Resume.pdf"
+                download
+                className="inline-block mt-4 px-5 py-2 bg-purple-600 text-white rounded-lg font-semibold shadow hover:bg-purple-700 transition-colors"
+              >
+                Download Resume
+              </a>
             </div>
             
             <div>
@@ -290,7 +304,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               <h3 className="font-semibold mb-4 text-gray-900 dark:text-white">Connect</h3>
               <div className="flex space-x-4">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/codac-black"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
@@ -298,7 +312,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   <Github size={24} />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/brunomaisiba"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
@@ -306,7 +320,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   <Linkedin size={24} />
                 </a>
                 <a
-                  href="mailto:alex@example.com"
+                  href="mailto:maisibabruno@gmail.com"
                   className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
                 >
                   <Mail size={24} />
@@ -317,7 +331,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           
           <div className="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8 text-center">
             <p className="text-gray-600 dark:text-gray-300">
-              © 2024 Alex Chen. All rights reserved. Built with React, TypeScript, and Tailwind CSS.
+              © 2025 Maisiba Bruno. All rights reserved😯. Built with React, TypeScript, and Tailwind CSS.
             </p>
           </div>
         </div>

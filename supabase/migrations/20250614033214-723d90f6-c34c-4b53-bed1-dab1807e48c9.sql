@@ -1,4 +1,3 @@
-
 -- Create a table for blog posts
 CREATE TABLE public.blog_posts (
   id UUID NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -8,7 +7,7 @@ CREATE TABLE public.blog_posts (
   content TEXT,
   category TEXT NOT NULL DEFAULT 'General',
   tags TEXT[] DEFAULT '{}',
-  author TEXT NOT NULL DEFAULT 'Alex Chen',
+  author TEXT NOT NULL DEFAULT 'Bruno Maisiba',
   featured BOOLEAN DEFAULT false,
   published BOOLEAN DEFAULT false,
   image_url TEXT,
