@@ -173,7 +173,7 @@ const Index = () => {
                 {/* Main Image Container */}
                 <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl animate-float">
                   <img
-                    src="./public/images/image.jpeg"
+                    src="/images/image.jpeg"
                     alt="Bruno Maisiba - Data Analyst"
                     className="w-full h-auto object-cover"
                   />

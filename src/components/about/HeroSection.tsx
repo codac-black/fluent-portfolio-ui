@@ -34,7 +34,7 @@ const HeroSection = () => {
           <div className="relative animate-slide-in-right">
             <div className="grid grid-cols-2 gap-4">
               <img
-                src="./public/images/image.jpeg"
+                src="/images/image.jpeg"
                 alt="Bruno working on data analysis"
                 className="rounded-2xl shadow-lg hover-lift"
               />

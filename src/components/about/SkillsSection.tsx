@@ -15,7 +15,7 @@ const SkillsSection = () => {
     ],
     tools: [
       'DBT', 'Airflow', 'Snowflake', 'DuckDB', 'Git', 'Linux', 'Docker',
-      'Web Scraping', 'API Integration', 'Jupyter', 'VS Code', 'AWS'
+      'Web Scraping', 'API Integration', 'Jupyter', 'VS Code', 'AWS', 'GCP'
     ],
     domain: [
       'Solar Energy Analytics', 'Aviation Safety', 'Cybersecurity', 'Supply Chain',
