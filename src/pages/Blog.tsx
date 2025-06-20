@@ -137,7 +137,7 @@ const Blog = () => {
           <div className="max-w-6xl mx-auto text-center">
             <h1 className="text-5xl font-bold gradient-text mb-6">Blog</h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-              Thoughts, tutorials, and insights about web development, career growth, and technology trends
+              Thoughts, tutorials, and insights about data analytics, machine learning, career growth, and technology trends
             </p>
           </div>
         </div>

@@ -19,7 +19,7 @@ const EmptyBlogState: React.FC = () => {
             <div className="text-gray-500 dark:text-gray-400">
               <p>Stay tuned for upcoming articles about:</p>
               <div className="flex flex-wrap justify-center gap-2 mt-4">
-                {['Web Development', 'React', 'TypeScript', 'Career Tips', 'Tech Tutorials'].map((topic) => (
+                {['Data Analytics', 'Machine Learning', 'Cybersecurity', 'Career Tips', 'Tech Tutorials'].map((topic) => (
                   <span key={topic} className="px-3 py-1 bg-purple-100 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-full text-sm">
                     {topic}
                   </span>

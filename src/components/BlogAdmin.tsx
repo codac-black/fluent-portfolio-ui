@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Plus, Edit, Trash2, Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -40,8 +40,11 @@ const BlogAdmin = () => {
     featured: false,
     published: false,
     image_url: '',
-    read_time: '5 min read'
+    read_time: '5 min read',
+    draft: true,
   });
+  const [autoSaveStatus, setAutoSaveStatus] = useState('');
+  const debounceTimer = useRef<NodeJS.Timeout | null>(null);
 
   const { toast } = useToast();
   const queryClient = useQueryClient();
@@ -137,6 +140,91 @@ const BlogAdmin = () => {
     },
   });
 
+  // Load latest draft when starting a new post
+  useEffect(() => {
+    if (isCreating && !editingPost) {
+      (async () => {
+        const { data, error } = await supabase
+          .from('blog_posts')
+          .select('*')
+          .eq('draft', true)
+          .eq('published', false)
+          .order('updated_at', { ascending: false })
+          .limit(1)
+          .single();
+        if (data && !error) {
+          setFormData({
+            ...formData,
+            ...data,
+            tags: Array.isArray(data.tags) ? data.tags.join(', ') : '',
+          });
+        }
+      })();
+    }
+    // eslint-disable-next-line
+  }, [isCreating, editingPost]);
+
+  // Add this helper function inside BlogAdmin component
+  const generateUniqueSlug = async (baseSlug: string, currentId?: string) => {
+    let slug = baseSlug;
+    let counter = 1;
+    while (true) {
+      const { data } = await supabase
+        .from('blog_posts')
+        .select('id')
+        .eq('slug', slug)
+        .neq('id', currentId || '')
+        .maybeSingle();
+      if (!data) break;
+      slug = `${baseSlug}-${counter++}`;
+    }
+    return slug;
+  };
+
+  // Debounced auto-save to Supabase
+  useEffect(() => {
+    if (!isCreating) return;
+    if (debounceTimer.current) clearTimeout(debounceTimer.current);
+    debounceTimer.current = setTimeout(async () => {
+      if (formData.title.trim() || formData.content?.trim()) {
+        setAutoSaveStatus('Saving...');
+        const tagsArray = formData.tags ? formData.tags.split(',').map((tag) => tag.trim()) : [];
+        const baseSlug = (formData.slug || formData.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''));
+        const uniqueSlug = await generateUniqueSlug(baseSlug, formData.id);
+        const draftData = {
+          ...formData,
+          tags: tagsArray,
+          slug: uniqueSlug,
+          draft: true,
+          published: false,
+        };
+        let result;
+        if (formData.id) {
+          result = await supabase
+            .from('blog_posts')
+            .update(draftData)
+            .eq('id', formData.id)
+            .select()
+            .single();
+        } else {
+          result = await supabase
+            .from('blog_posts')
+            .insert([draftData])
+            .select()
+            .single();
+        }
+        if (!result.error && result.data) {
+          setFormData((prev) => ({ ...prev, id: result.data.id })); // Only update id to avoid jitter
+          setAutoSaveStatus('Draft saved');
+        } else {
+          setAutoSaveStatus(result.error?.message || 'Auto-save failed');
+        }
+        setTimeout(() => setAutoSaveStatus(''), 2000);
+      }
+    }, 2000);
+    // eslint-disable-next-line
+  }, [formData, isCreating]);
+
   const resetForm = () => {
     setFormData({
       title: '',
@@ -149,7 +237,8 @@ const BlogAdmin = () => {
       featured: false,
       published: false,
       image_url: '',
-      read_time: '5 min read'
+      read_time: '5 min read',
+      draft: true,
     });
     setIsCreating(false);
     setEditingPost(null);
@@ -178,8 +267,47 @@ const BlogAdmin = () => {
     saveMutation.mutate(formData);
   };
 
+  // Update saveDraftImmediately to use unique slug and only update id in formData
+  const saveDraftImmediately = async (updatedFields: Partial<typeof formData>) => {
+    setAutoSaveStatus('Saving...');
+    const tagsArray = (formData.tags ? formData.tags.split(',').map((tag) => tag.trim()) : []);
+    const baseSlug = (updatedFields.slug || formData.slug || formData.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''));
+    const uniqueSlug = await generateUniqueSlug(baseSlug, formData.id);
+    const draftData = {
+      ...formData,
+      ...updatedFields,
+      tags: tagsArray,
+      slug: uniqueSlug,
+      draft: true,
+      published: false,
+    };
+    let result;
+    if (formData.id) {
+      result = await supabase
+        .from('blog_posts')
+        .update(draftData)
+        .eq('id', formData.id)
+        .select()
+        .single();
+    } else {
+      result = await supabase
+        .from('blog_posts')
+        .insert([draftData])
+        .select()
+        .single();
+    }
+    if (!result.error && result.data) {
+      setFormData((prev) => ({ ...prev, id: result.data.id })); // Only update id to avoid jitter
+      setAutoSaveStatus('Draft saved');
+    } else {
+      setAutoSaveStatus(result.error?.message || 'Auto-save failed');
+    }
+    setTimeout(() => setAutoSaveStatus(''), 2000);
+  };
+
   const handleImageUploaded = (url: string) => {
-    setFormData({ ...formData, image_url: url });
+    setFormData((prev) => ({ ...prev, image_url: url }));
+    saveDraftImmediately({ image_url: url });
   };
 
   const handleImageRemoved = () => {
@@ -207,6 +335,19 @@ const BlogAdmin = () => {
             <CardTitle>{editingPost ? 'Edit Post' : 'Create New Post'}</CardTitle>
           </CardHeader>
           <CardContent>
+            {autoSaveStatus && (
+              <div className="mb-4 text-sm text-gray-500 flex items-center gap-2">
+                <span className={
+                  autoSaveStatus === 'Saving...'
+                    ? 'text-yellow-600'
+                    : autoSaveStatus === 'Draft saved'
+                    ? 'text-green-600'
+                    : 'text-red-600'
+                }>
+                  {autoSaveStatus}
+                </span>
+              </div>
+            )}
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <Input
