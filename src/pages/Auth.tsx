@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -7,12 +6,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { User } from '@supabase/supabase-js';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [captchaError, setCaptchaError] = useState<string | null>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -25,9 +27,36 @@ const Auth = () => {
     });
   }, [navigate]);
 
+  const verifyCaptcha = async (token: string) => {
+    // Adjust the URL if deploying to production
+    const res = await fetch('/functions/v1/verify-hcaptcha', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token }),
+    });
+    const data = await res.json();
+    return data.success;
+  };
+
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+
+    if (!captchaToken) {
+      setCaptchaError('Please complete the hCaptcha challenge.');
+      setLoading(false);
+      return;
+    }
+
+    // Verify hCaptcha token server-side
+    const isValid = await verifyCaptcha(captchaToken);
+    if (!isValid) {
+      setCaptchaError('Captcha verification failed. Please try again.');
+      setLoading(false);
+      return;
+    }
+
+    setCaptchaError(null);
 
     try {
       if (isLogin) {
@@ -35,9 +64,7 @@ const Auth = () => {
           email,
           password,
         });
-
         if (error) throw error;
-
         toast({
           title: "Success",
           description: "Logged in successfully!",
@@ -51,9 +78,7 @@ const Auth = () => {
             emailRedirectTo: `${window.location.origin}/`
           }
         });
-
         if (error) throw error;
-
         toast({
           title: "Success",
           description: "Account created successfully! Please check your email to verify your account.",
@@ -99,6 +124,15 @@ const Auth = () => {
                 minLength={6}
               />
             </div>
+            <HCaptcha
+              sitekey={import.meta.env.VITE_HCAPTCHA_SITEKEY}
+              onVerify={setCaptchaToken}
+              onExpire={() => setCaptchaToken(null)}
+              theme="light"
+            />
+            {captchaError && (
+              <div className="text-red-600 text-sm">{captchaError}</div>
+            )}
             <Button
               type="submit"
               className="w-full bg-purple-600 hover:bg-purple-700"
